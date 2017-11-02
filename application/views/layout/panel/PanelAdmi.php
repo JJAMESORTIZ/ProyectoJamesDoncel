@@ -51,17 +51,17 @@
    </div>
    </section>
 
-  <!--
+  
       <section class="content">
-        <!-- Small boxes (Stat box) --
+        <!-- Small boxes (Stat box) -->
         <div class="row">
 
               
 
-        <!-- Small boxes (Stat box) --
+        <!-- Small boxes (Stat box) -->
         <div class="row">
           <div class="col-lg-3 col-xs-6">
-            <!-- small box --
+            <!-- small box -->
             <div class="small-box bg-orange">
               <div class="inner">
                 <h3>#</h3>
