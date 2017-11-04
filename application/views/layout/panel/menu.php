@@ -40,7 +40,7 @@
           </ul>-->
         </li>
         <li class="treeview">
-          <a href="#ventgestionu" type="button" data-toggle="modal" class="small-box-footer">
+          <a href="http://localhost/ProyectoJamesDoncel/index.php/usuarios" type="button"  class="small-box-footer">
             <i class="fa fa-files-o"></i>
             <span>Gestion usuario</span>
             <span class="pull-right-container">
