@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2017 a las 00:33:16
+-- Tiempo de generación: 05-11-2017 a las 00:40:40
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.8
 
@@ -21,6 +21,56 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `fiscalia`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `files`
+--
+
+CREATE TABLE `files` (
+  `id` int(11) NOT NULL,
+  `file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL COMMENT 'Upload Date',
+  `modified` datetime NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=Unblock, 0=Block'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `files`
+--
+
+INSERT INTO `files` (`id`, `file_name`, `created`, `modified`, `status`) VALUES
+(1, 'AUTONOMIA.jpg', '2017-11-04 23:20:48', '2017-11-04 23:20:48', 1),
+(2, 'DONANTES_FALLECIDOS.jpg', '2017-11-04 23:26:03', '2017-11-04 23:26:03', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `funcionarios`
+--
+
+CREATE TABLE `funcionarios` (
+  `ID` int(11) NOT NULL,
+  `CEDULA` varchar(55) NOT NULL,
+  `NOMBRE` varchar(55) NOT NULL,
+  `APELLIDO` varchar(55) NOT NULL,
+  `EMAIL` varchar(55) NOT NULL,
+  `FECHA_REGISTRO` date NOT NULL,
+  `CARGO` varchar(55) NOT NULL,
+  `ESTATUS` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `funcionarios`
+--
+
+INSERT INTO `funcionarios` (`ID`, `CEDULA`, `NOMBRE`, `APELLIDO`, `EMAIL`, `FECHA_REGISTRO`, `CARGO`, `ESTATUS`) VALUES
+(1, '988', 'hhhg', 'ddd', 'jhon.doncel@ucp.edu.co', '2017-10-25', 'TECNICO', 0),
+(2, '12345678', 'Valentina', 'Vargas', 'valentina@gmail.com', '2017-10-11', 'Fiscal', 0),
+(4, '78844', 'IOIOIO', 'FDSFF', 'DFDFDFF@JO.COM', '2017-10-26', 'dswddfs', 0),
+(5, '8888888', 'DSFDSF', 'GDFGDF', 'BVBBVBV@VVDFV.COM', '2017-10-26', 'CDSVDFV', 0),
+(6, '888898999', 'yaaaa', 'olaa', 'ola@hotma.com', '2017-10-26', 'fdsgfg', 0);
 
 -- --------------------------------------------------------
 
@@ -136,6 +186,18 @@ INSERT INTO `usuarios` (`ID`, `USUARIO`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `FECHA_
 --
 
 --
+-- Indices de la tabla `files`
+--
+ALTER TABLE `files`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `funcionarios`
+--
+ALTER TABLE `funcionarios`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indices de la tabla `menu_sistema`
 --
 ALTER TABLE `menu_sistema`
@@ -157,6 +219,16 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
+--
+-- AUTO_INCREMENT de la tabla `files`
+--
+ALTER TABLE `files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `funcionarios`
+--
+ALTER TABLE `funcionarios`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `menu_sistema`
 --
