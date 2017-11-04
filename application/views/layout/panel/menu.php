@@ -42,7 +42,7 @@
         <li class="treeview">
           <a href="http://localhost/ProyectoJamesDoncel/index.php/usuarios" type="button"  class="small-box-footer">
             <i class="fa fa-files-o"></i>
-            <span>Gestion usuario</span>
+            <span>Gestion usuarios</span>
             <span class="pull-right-container">
              <!-- <span class="label label-primary pull-right">4</span>
             </span>-->

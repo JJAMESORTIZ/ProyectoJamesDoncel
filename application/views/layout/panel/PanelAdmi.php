@@ -35,15 +35,7 @@
                              }else{ 
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
                                   echo '<div class="col-lg-3 col-xs-6"> <div class="'.$CrearMenu1["COLOR"].'"><div class="inner"> <h1>'.$CrearMenu1["DESCRIPCION"].'</h1></div><div class="icon"><i class="'.$CrearMenu1["ICON"].'"></i></div></td>';
-=======
-                                   echo '<div class="col-lg-3 col-xs-6"> <div class="'.$CrearMenu1["COLOR"].'"><div class="inner"> <h3>'.$CrearMenu1["DESCRIPCION"].'</h3><p>'.$CrearMenu1["DESCRIPCION"].'</p></div><div class="icon"><i class="'.$CrearMenu1["ICON"].'"></i></div></td>';
->>>>>>> d4bd2a1f0d22575d8dd712ca67b6104d8d8e6713
-=======
-                                   echo '<div class="col-lg-3 col-xs-6"> <div class="'.$CrearMenu1["COLOR"].'"><div class="inner"> <h3>#</h3><p>'.$CrearMenu1["DESCRIPCION"].'</p></div><div class="icon"><i class="'.$CrearMenu1["ICON"].'"></i></div></td>';
->>>>>>> 1409ca77e36705194d9fe7236fc9858fcea2f9b1
                                   echo ' <a href="http://localhost/ProyectoJamesDoncel/index.php'.$CrearMenu1["URL"].'" class="small-box-footer">
             Acceder <i class="fa fa-arrow-circle-right"></i></a></div></div>';
       
@@ -60,8 +52,6 @@
    </section>
 
   
-<<<<<<< HEAD
-<<<<<<< HEAD
       <!--<section class="content">
         <!-- Small boxes (Stat box) --
         <div class="row">
@@ -85,12 +75,6 @@
             </div>
           </div>
         </div></section>-->
-=======
-      
->>>>>>> d4bd2a1f0d22575d8dd712ca67b6104d8d8e6713
-=======
-      
->>>>>>> 1409ca77e36705194d9fe7236fc9858fcea2f9b1
       
     
   
