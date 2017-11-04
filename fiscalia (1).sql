@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2017 a las 03:55:13
--- Versión del servidor: 10.1.25-MariaDB
--- Versión de PHP: 7.1.7
+-- Tiempo de generación: 05-11-2017 a las 00:33:16
+-- Versión del servidor: 10.1.26-MariaDB
+-- Versión de PHP: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,34 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `funcionarios`
---
-
-CREATE TABLE `funcionarios` (
-  `ID` int(11) NOT NULL,
-  `CEDULA` varchar(55) NOT NULL,
-  `NOMBRE` varchar(55) NOT NULL,
-  `APELLIDO` varchar(55) NOT NULL,
-  `EMAIL` varchar(55) NOT NULL,
-  `FECHA_REGISTRO` date NOT NULL,
-  `CARGO` varchar(55) NOT NULL,
-  `ESTATUS` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `funcionarios`
---
-
-INSERT INTO `funcionarios` (`ID`, `CEDULA`, `NOMBRE`, `APELLIDO`, `EMAIL`, `FECHA_REGISTRO`, `CARGO`, `ESTATUS`) VALUES
-(1, '988', 'hhhg', 'ddd', 'jhon.doncel@ucp.edu.co', '2017-10-25', 'TECNICO', 0),
-(2, '12345678', 'Valentina', 'Vargas', 'valentina@gmail.com', '2017-10-11', 'Fiscal', 0),
-(4, '78844', 'IOIOIO', 'FDSFF', 'DFDFDFF@JO.COM', '2017-10-26', 'dswddfs', 0),
-(5, '8888888', 'DSFDSF', 'GDFGDF', 'BVBBVBV@VVDFV.COM', '2017-10-26', 'CDSVDFV', 0),
-(6, '888898999', 'yaaaa', 'olaa', 'ola@hotma.com', '2017-10-26', 'fdsgfg', 0);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `menu_sistema`
 --
 
@@ -61,6 +33,7 @@ CREATE TABLE `menu_sistema` (
   `DESCRIPCION` varchar(50) NOT NULL,
   `IMAGEN` varchar(50) NOT NULL DEFAULT 'imagenes/not_found.png',
   `URL` varchar(50) DEFAULT NULL,
+  `TITULO` varchar(50) NOT NULL,
   `ORDENAMIENTO` int(11) NOT NULL DEFAULT '0',
   `ESTATUS` int(11) NOT NULL DEFAULT '0',
   `COLOR` varchar(128) NOT NULL,
@@ -71,11 +44,11 @@ CREATE TABLE `menu_sistema` (
 -- Volcado de datos para la tabla `menu_sistema`
 --
 
-INSERT INTO `menu_sistema` (`ID`, `DESCRIPCION`, `IMAGEN`, `URL`, `ORDENAMIENTO`, `ESTATUS`, `COLOR`, `ICON`) VALUES
-(1, 'Retornar al Menu Principal', 'imagenes/Customer.png', '#', 1, 0, 'small-box bg-red', 'fa fa-home'),
-(3, 'Gestionar Usuario', 'imagenes/Product.png', '/usuarios', 2, 0, 'small-box bg-blue', '	fa fa-user-plus'),
-(4, 'Historiales Laborales', 'imagenes/not_found.png', '/usuarios/cargar', 6, 0, 'small-box bg-orange', '	fa fa-inbox'),
-(5, 'Gestionar Funcionarios', 'imagenes/not_found.png', '/funcionarios', 3, 0, 'small-box bg-aqua', '	fa fa-user-plus');
+INSERT INTO `menu_sistema` (`ID`, `DESCRIPCION`, `IMAGEN`, `URL`, `TITULO`, `ORDENAMIENTO`, `ESTATUS`, `COLOR`, `ICON`) VALUES
+(1, 'Retornar al Menu Principal', 'imagenes/Customer.png', '#', 'Inicio', 1, 0, 'small-box bg-red', 'fa fa-home'),
+(3, 'Gestionar Usuarios', 'imagenes/Product.png', '/usuarios', 'Usuarios', 2, 0, 'small-box bg-blue', '	fa fa-user-plus'),
+(4, 'Historiales Laborales', 'imagenes/not_found.png', '/usuarios/cargar', 'Funcionarios', 6, 0, 'small-box bg-orange', '	fa fa-inbox'),
+(5, 'Gestionar Funcionarios', 'imagenes/not_found.png', '/funcionarios', '', 3, 0, 'small-box bg-aqua', '	fa fa-user-plus');
 
 -- --------------------------------------------------------
 
@@ -163,12 +136,6 @@ INSERT INTO `usuarios` (`ID`, `USUARIO`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `FECHA_
 --
 
 --
--- Indices de la tabla `funcionarios`
---
-ALTER TABLE `funcionarios`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- Indices de la tabla `menu_sistema`
 --
 ALTER TABLE `menu_sistema`
@@ -191,15 +158,10 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de la tabla `funcionarios`
---
-ALTER TABLE `funcionarios`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
 -- AUTO_INCREMENT de la tabla `menu_sistema`
 --
 ALTER TABLE `menu_sistema`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `permisosmenu`
 --
