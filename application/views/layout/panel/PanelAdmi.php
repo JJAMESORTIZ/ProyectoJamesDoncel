@@ -35,7 +35,7 @@
                              }else{ 
 
 
-                                  echo '<div class="col-lg-3 col-xs-6"> <div class="'.$CrearMenu1["COLOR"].'"><div class="inner"> <h3>#</h3><p>'.$CrearMenu1["DESCRIPCION"].'</p></div><div class="icon"><i class="'.$CrearMenu1["ICON"].'"></i></div></td>';
+                                   echo '<div class="col-lg-3 col-xs-6"> <div class="'.$CrearMenu1["COLOR"].'"><div class="inner"> <h3>'.$CrearMenu1["URL"].'</h3><p>'.$CrearMenu1["DESCRIPCION"].'</p></div><div class="icon"><i class="'.$CrearMenu1["ICON"].'"></i></div></td>';
                                   echo ' <a href="http://localhost/ProyectoDocfis/index.php'.$CrearMenu1["URL"].'" class="small-box-footer">
             Acceder <i class="fa fa-arrow-circle-right"></i></a></div></div>';
       
@@ -53,15 +53,15 @@
 
   
       <section class="content">
-        <!-- Small boxes (Stat box) -->
+        <!-- Small boxes (Stat box) --
         <div class="row">
 
-              
+             
 
-        <!-- Small boxes (Stat box) -->
+        <!-- Small boxes (Stat box) --
         <div class="row">
           <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
+            <!-- small box --
             <div class="small-box bg-orange">
               <div class="inner">
                 <h3>#</h3>
