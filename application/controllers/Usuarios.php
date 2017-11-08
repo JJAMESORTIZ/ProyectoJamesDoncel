@@ -20,9 +20,7 @@ class usuarios extends CI_Controller
           $this->Seguridad();
           $this->load->view('layout/panel/header');
           $data['usuarios'] = $this->model_usuarios->ListarUsuarios(); 
-          //$this->load->view('layout/panel/header');
           $this->load->view('layout/panel/menu');
-
 		  $this->load->view('layout/panel/PanelAdmi'); 
 		  $this->load->view('layout/panel/view_usuarios', $data);       
           
