@@ -15,7 +15,7 @@ class login extends CI_Controller
           $this->load->view('layout/login/view_login');
           $this->load->view('layout/login/footer');
 	 }
-      function MuestraEntrada(){
+      function Muestranada(){
           $this->load->view('layout/entrada');
           
       }
@@ -47,7 +47,7 @@ class login extends CI_Controller
           $username = $this->input->post('username');
           $password = md5($this->input->post('password'));
           $url      = $this->input->post('url');
-           if ($this->form_validation->run() == true)
+           if ($this->form_validation->run() == false)
           {
                /*validamos si trae algun registro la consulta entonces nos logeamos*/
 			$user = $this->model_login->LoginBD($username, $password);
@@ -69,12 +69,12 @@ class login extends CI_Controller
                }else{
 				//en caso contrario mostramos el error de usuario o contraseña invalido
                     $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Usuario/Contraseña Invalido</div>');
-                    $this->MuestraLogin();
+                    $this->Muestranada();
                }
           }
           else
           {
-               $this->MuestraLogin();
+               $this->Muestranada();
           }
      }
 }
