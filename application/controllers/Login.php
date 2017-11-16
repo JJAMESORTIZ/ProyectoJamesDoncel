@@ -11,22 +11,28 @@ class login extends CI_Controller
      }
      /*FUNCION QUE CARGA EL LOGIN*/
      function MuestraLogin(){
-          $this->load->view('layout/login/header');
+          $this->load->view('layout/entrada');
+          //$this->load->view('layout/login/view_inicio');
           $this->load->view('layout/login/view_login');
           $this->load->view('layout/login/footer');
 	 }
-      function Muestranada(){
-          $this->load->view('layout/entrada');
-          
+      function MuestraEntrada(){
+               $this->load->view('layout/panel/header');
+               $this->load->view('layout/panel/menu');
+               $this->load->view('layout/panel/PanelAdmi');
+               $this->load->view('layout/panel/footer');
       }
+      
      public function index()
      {
           /*VALIDAMOS SI LA SESION ES ACTIVA REDIRIGIMOS AL HOME, SI NO AL LOGIN*/
           if($this->session->userdata('is_logged_in')){
-               $this->load->view('layout/panel/header');
-               $this->load->view('layout/panel/menu');
-			$this->load->view('layout/panel/PanelAdmi');
-			$this->load->view('layout/panel/footer');
+               $this->load->view('layout/panel/view_err');
+               $this->load->view('layout/panel/PanelAdmi');
+               //$this->load->view('layout/panel/header');
+               //$this->load->view('layout/panel/menu');
+			//$this->load->view('layout/panel/PanelAdmi');
+			//$this->load->view('layout/panel/footer');
           }else{
                $this->MuestraLogin();
           }
@@ -34,8 +40,7 @@ class login extends CI_Controller
      function CerrarSesion(){
           /*destrozamos la sesion activay nos vamos al login de nuevo*/
           if($this->session->userdata('is_logged_in')){
-               $this->session->sess_destroy(); 
-               //$this->MuestraLogin();
+               $this->session->sess_destroy();
                $this->MuestraLogin();
           }
      }
@@ -47,7 +52,7 @@ class login extends CI_Controller
           $username = $this->input->post('username');
           $password = md5($this->input->post('password'));
           $url      = $this->input->post('url');
-           if ($this->form_validation->run() == false)
+           if ($this->form_validation->run() == true)
           {
                /*validamos si trae algun registro la consulta entonces nos logeamos*/
 			$user = $this->model_login->LoginBD($username, $password);
@@ -62,19 +67,19 @@ class login extends CI_Controller
                          'is_logged_in' => TRUE,                 
                          );
                     /*Cargamos permisos de usuario y lo guardamos en una sesion*/
-                    //$Menu = $this->model_login->PermisosMenu($user->ID);
+                    $Menu = $this->model_login->PermisosMenu($user->ID);
                     $this->session->set_userdata($session);//Cargamos la sesion de datos del usuario logeado
                     $this->session->set_userdata($Menu);//cargamos la sesion del menu de acuerdo a los permisos
                     redirect($this->index());//nos vamos al index
                }else{
 				//en caso contrario mostramos el error de usuario o contraseña invalido
                     $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Usuario/Contraseña Invalido</div>');
-                    $this->Muestranada();
+                    $this->MuestraEntrada();
                }
           }
           else
           {
-               $this->Muestranada();
+               $this->MuestraEntrada();
           }
      }
 }
