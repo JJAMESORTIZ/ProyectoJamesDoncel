@@ -62,7 +62,7 @@ class login extends CI_Controller
                          'is_logged_in' => TRUE,                 
                          );
                     /*Cargamos permisos de usuario y lo guardamos en una sesion*/
-                    $Menu = $this->model_login->PermisosMenu($user->ID);
+                    //$Menu = $this->model_login->PermisosMenu($user->ID);
                     $this->session->set_userdata($session);//Cargamos la sesion de datos del usuario logeado
                     $this->session->set_userdata($Menu);//cargamos la sesion del menu de acuerdo a los permisos
                     redirect($this->index());//nos vamos al index
