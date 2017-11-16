@@ -7,7 +7,7 @@ class login extends CI_Controller
      {
           parent::__construct();
           //Cargamos el modelo del controlador
-          $this->load->model('model_login');
+          //$this->load->model('model_login');
      }
      /*FUNCION QUE CARGA EL LOGIN*/
      function MuestraLogin(){
@@ -28,14 +28,13 @@ class login extends CI_Controller
 			$this->load->view('layout/panel/PanelAdmi');
 			$this->load->view('layout/panel/footer');
           }else{
-               $this->MuestraLogin();
+               //$this->MuestraLogin();
           }
      }
      function CerrarSesion(){
           /*destrozamos la sesion activay nos vamos al login de nuevo*/
           if($this->session->userdata('is_logged_in')){
                $this->session->sess_destroy(); 
-               //$this->MuestraLogin();
                $this->MuestraLogin();
           }
      }
