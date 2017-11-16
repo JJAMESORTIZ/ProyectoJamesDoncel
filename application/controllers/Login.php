@@ -15,7 +15,7 @@ class login extends CI_Controller
           $this->load->view('layout/login/view_login');
           $this->load->view('layout/login/footer');
 	 }
-      function Muestranada(){
+      function MuestraEntrada(){
           $this->load->view('layout/entrada');
           
       }
@@ -69,12 +69,12 @@ class login extends CI_Controller
                }else{
 				//en caso contrario mostramos el error de usuario o contraseña invalido
                     $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Usuario/Contraseña Invalido</div>');
-                    $this->Muestranada();
+                    $this->MuestraLogin();
                }
           }
           else
           {
-               $this->Muestranada();
+               $this->MuestraLogin();
           }
      }
 }
