@@ -1,5 +1,15 @@
 
   <br>
+  <style type="text/css">
+  	footer {
+  background-color: #082e69;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  color: white;
+}
+  </style>
     <footer>
         <center>
            <h6> &copy; Desarrollo JAMES ORTIZ - JHON DONCEL  PHP con CODEIGNITER 2017 Derechos Reservados </h6>

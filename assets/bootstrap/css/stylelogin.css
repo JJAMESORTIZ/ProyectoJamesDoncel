@@ -7,6 +7,7 @@ body {
     text-align: center;;
     background-color: #0D47A1;
 
+
 }
 strong {
 	font-weight: 500;
@@ -28,6 +29,7 @@ h3 {
 /* Contenido y elementos del formulario */
 .my-content {
     padding: 100px 0 170px 0;
+    
 }
 .my-content .mydescripcion {
     margin: 20px 0 10px 0;
@@ -45,6 +47,7 @@ h3 {
     -moz-border-radius: 10px 10px 0 0; 
     -webkit-border-radius: 10px 10px 0 0; 
     border-radius: 10px 10px 0 0;
+
     
 }
 .myform-top-left { 

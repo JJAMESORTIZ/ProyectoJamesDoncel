@@ -2,7 +2,7 @@
 <br><br>
 <?php
     if ($this->session->userdata('is_logged_in')){
-      echo '<h4 align="right">';
+      echo '<h2 align="right">';
       echo '<small>';
       echo 'Bienvenido: <strong>'.$this->session->userdata('NOMBRE').' '.$this->session->userdata('APELLIDOS').'</strong>&nbsp;|&nbsp;';
       echo 'Tipo Usuario: <strong>'.$this->session->userdata('TIPOUSUARIO').'</strong>&nbsp;|&nbsp;';

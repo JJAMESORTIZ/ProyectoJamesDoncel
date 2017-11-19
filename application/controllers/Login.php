@@ -17,22 +17,18 @@ class login extends CI_Controller
           $this->load->view('layout/login/footer');
 	 }
       function MuestraEntrada(){
-               $this->load->view('layout/panel/header');
-               $this->load->view('layout/panel/menu');
-               $this->load->view('layout/panel/PanelAdmi');
-               $this->load->view('layout/panel/footer');
+         $this->load->view('layout/entrada');
+          $this->load->view('layout/view_inicio');
       }
       
      public function index()
      {
           /*VALIDAMOS SI LA SESION ES ACTIVA REDIRIGIMOS AL HOME, SI NO AL LOGIN*/
           if($this->session->userdata('is_logged_in')){
-               $this->load->view('layout/panel/view_err');
-               $this->load->view('layout/panel/PanelAdmi');
-               //$this->load->view('layout/panel/header');
-               //$this->load->view('layout/panel/menu');
-			//$this->load->view('layout/panel/PanelAdmi');
-			//$this->load->view('layout/panel/footer');
+               $this->load->view('layout/panel/header');
+               $this->load->view('layout/panel/menu');
+			$this->load->view('layout/panel/PanelAdmi');
+			$this->load->view('layout/panel/footer');
           }else{
                $this->MuestraLogin();
           }
@@ -40,8 +36,8 @@ class login extends CI_Controller
      function CerrarSesion(){
           /*destrozamos la sesion activay nos vamos al login de nuevo*/
           if($this->session->userdata('is_logged_in')){
-               $this->session->sess_destroy();
-               $this->MuestraLogin();
+               $this->session->sess_destroy(); 
+               $this->MuestraEntrada();
           }
      }
      public function ValidarAcceso(){
@@ -74,12 +70,12 @@ class login extends CI_Controller
                }else{
 				//en caso contrario mostramos el error de usuario o contraseña invalido
                     $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Usuario/Contraseña Invalido</div>');
-                    $this->MuestraEntrada();
+                    $this->MuestraLogin();
                }
           }
           else
           {
-               $this->MuestraEntrada();
+               $this->MuestraLogin();
           }
      }
 }

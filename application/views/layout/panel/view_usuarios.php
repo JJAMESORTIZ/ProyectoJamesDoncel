@@ -38,7 +38,7 @@ if(isset($_GET['permisos'])){
   }
 ?>
 
-<a href="http://localhost/ProyectoDocfis/index.php/usuarios/nuevo" class="btn btn-primary">Agregar usuario</a><br><br>
+<a href="<?php echo base_url();?>index.php/usuarios/nuevo/<?php echo $usuario->ID;?>/" class="btn btn-primary">Agregar usuario</a><br><br>
 
 
 <center>

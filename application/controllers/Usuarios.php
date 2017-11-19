@@ -6,7 +6,7 @@ class usuarios extends CI_Controller
      public function __construct()
      {
           parent::__construct();
-          //Cargamos el modelo deel controlador
+          //Cargamos el modelo del controlador 
           $this->load->model('model_usuarios');
           $this->load->model('model_seguridad');
           $this->load->model('model_login');
@@ -20,9 +20,7 @@ class usuarios extends CI_Controller
           $this->Seguridad();
           $this->load->view('layout/panel/header');
           $data['usuarios'] = $this->model_usuarios->ListarUsuarios(); 
-          //$this->load->view('layout/panel/header');
           $this->load->view('layout/panel/menu');
-
 		  $this->load->view('layout/panel/PanelAdmi'); 
 		  $this->load->view('layout/panel/view_usuarios', $data);       
           

@@ -44,8 +44,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Inicio <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-        <!--<li class="dropdown">
+        <!--<li><a href="#">Link</a></li>
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
@@ -60,7 +60,7 @@
       </ul>
      
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Iniciar sessión</a></li>
+        <a href="<?php echo base_url();?>index.php/login" class="btn btn-info" center><spam>Iniciar sessión</spam></a>
         <!--<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -91,3 +91,6 @@
 
   
 
+</body></html>
+
+<br><br><br><br><br><br>

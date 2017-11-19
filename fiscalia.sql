@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2017 a las 00:40:40
+-- Tiempo de generación: 19-11-2017 a las 22:25:20
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.8
 
@@ -21,28 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `fiscalia`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `files`
---
-
-CREATE TABLE `files` (
-  `id` int(11) NOT NULL,
-  `file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created` datetime NOT NULL COMMENT 'Upload Date',
-  `modified` datetime NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=Unblock, 0=Block'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `files`
---
-
-INSERT INTO `files` (`id`, `file_name`, `created`, `modified`, `status`) VALUES
-(1, 'AUTONOMIA.jpg', '2017-11-04 23:20:48', '2017-11-04 23:20:48', 1),
-(2, 'DONANTES_FALLECIDOS.jpg', '2017-11-04 23:26:03', '2017-11-04 23:26:03', 1);
 
 -- --------------------------------------------------------
 
@@ -66,11 +44,22 @@ CREATE TABLE `funcionarios` (
 --
 
 INSERT INTO `funcionarios` (`ID`, `CEDULA`, `NOMBRE`, `APELLIDO`, `EMAIL`, `FECHA_REGISTRO`, `CARGO`, `ESTATUS`) VALUES
-(1, '988', 'hhhg', 'ddd', 'jhon.doncel@ucp.edu.co', '2017-10-25', 'TECNICO', 0),
-(2, '12345678', 'Valentina', 'Vargas', 'valentina@gmail.com', '2017-10-11', 'Fiscal', 0),
 (4, '78844', 'IOIOIO', 'FDSFF', 'DFDFDFF@JO.COM', '2017-10-26', 'dswddfs', 0),
 (5, '8888888', 'DSFDSF', 'GDFGDF', 'BVBBVBV@VVDFV.COM', '2017-10-26', 'CDSVDFV', 0),
 (6, '888898999', 'yaaaa', 'olaa', 'ola@hotma.com', '2017-10-26', 'fdsgfg', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `imagenes`
+--
+
+CREATE TABLE `imagenes` (
+  `idimagen` int(11) NOT NULL,
+  `cedula` varchar(55) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `imagen` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -97,8 +86,8 @@ CREATE TABLE `menu_sistema` (
 INSERT INTO `menu_sistema` (`ID`, `DESCRIPCION`, `IMAGEN`, `URL`, `TITULO`, `ORDENAMIENTO`, `ESTATUS`, `COLOR`, `ICON`) VALUES
 (1, 'Retornar al Menu Principal', 'imagenes/Customer.png', '#', 'Inicio', 1, 0, 'small-box bg-red', 'fa fa-home'),
 (3, 'Gestionar Usuarios', 'imagenes/Product.png', '/usuarios', 'Usuarios', 2, 0, 'small-box bg-blue', '	fa fa-user-plus'),
-(4, 'Historiales Laborales', 'imagenes/not_found.png', '/usuarios/cargar', 'Funcionarios', 6, 0, 'small-box bg-orange', '	fa fa-inbox'),
-(5, 'Gestionar Funcionarios', 'imagenes/not_found.png', '/funcionarios', '', 3, 0, 'small-box bg-aqua', '	fa fa-user-plus');
+(5, 'Gestionar Funcionarios', 'imagenes/not_found.png', '/funcionarios', '', 3, 0, 'small-box bg-aqua', '	fa fa-user-plus'),
+(6, 'Historiales Laborales', 'imagenes/not_found.png', '/usuarios/cargar', '', 6, 0, 'small-box bg-orange', 'fa fa-inbox');
 
 -- --------------------------------------------------------
 
@@ -119,7 +108,7 @@ CREATE TABLE `permisosmenu` (
 
 INSERT INTO `permisosmenu` (`ID`, `ID_USUARIO`, `ID_MENU`, `ESTATUS`) VALUES
 (1, 1, 1, 0),
-(2, 1, 2, 0),
+(2, 1, 2, 1),
 (3, 1, 3, 0),
 (4, 1, 5, 1),
 (5, 2, 1, 0),
@@ -136,7 +125,7 @@ INSERT INTO `permisosmenu` (`ID`, `ID_USUARIO`, `ID_MENU`, `ESTATUS`) VALUES
 (16, 4, 5, 0),
 (17, 1, 5, 1),
 (18, 1, 6, 0),
-(19, 1, 4, 0),
+(19, 1, 4, 1),
 (20, 1, 5, 1),
 (21, 1, 5, 1),
 (22, 1, 5, 1),
@@ -152,8 +141,12 @@ INSERT INTO `permisosmenu` (`ID`, `ID_USUARIO`, `ID_MENU`, `ESTATUS`) VALUES
 (32, 1, 5, 1),
 (33, 1, 5, 1),
 (34, 1, 5, 1),
-(35, 1, 5, 0),
-(36, 4, 4, 0);
+(35, 1, 5, 1),
+(36, 4, 4, 1),
+(37, 1, 5, 1),
+(38, 1, 5, 1),
+(39, 1, 5, 1),
+(40, 1, 5, 0);
 
 -- --------------------------------------------------------
 
@@ -186,16 +179,18 @@ INSERT INTO `usuarios` (`ID`, `USUARIO`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `FECHA_
 --
 
 --
--- Indices de la tabla `files`
---
-ALTER TABLE `files`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `CEDULA` (`CEDULA`);
+
+--
+-- Indices de la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+  ADD PRIMARY KEY (`idimagen`),
+  ADD KEY `cedula` (`cedula`);
 
 --
 -- Indices de la tabla `menu_sistema`
@@ -220,30 +215,40 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de la tabla `files`
---
-ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
 -- AUTO_INCREMENT de la tabla `funcionarios`
 --
 ALTER TABLE `funcionarios`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
+-- AUTO_INCREMENT de la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+  MODIFY `idimagen` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `menu_sistema`
 --
 ALTER TABLE `menu_sistema`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `permisosmenu`
 --
 ALTER TABLE `permisosmenu`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+  ADD CONSTRAINT `imagenes_ibfk_1` FOREIGN KEY (`cedula`) REFERENCES `funcionarios` (`CEDULA`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

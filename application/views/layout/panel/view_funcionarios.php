@@ -33,7 +33,7 @@ if(isset($_GET['update'])){
 
 ?>
 
-<a href="http://localhost/ProyectoDocfis/index.php/funcionarios/nuevo" class="btn btn-primary">Agregar funcionario</a><br><br>
+<a href="<?php echo base_url();?>index.php/funcionarios/nuevo/<?php echo $Cedula->ID;?>/" class="btn btn-primary">Agregar funcionario</a><br><br>
 
 
 <center>
@@ -60,13 +60,16 @@ $contador = 0;
     echo '<tr>';
     echo '<td>'
 ?>
-    <a href="<?php echo base_url();?>index.php/funcionarios/editar/<?php echo $Cedula->ID;?>/" class="btn btn-success"><spam class="glyphicon glyphicon-edit"></spam></a>
+    <a href="<?php echo base_url();?>index.php/funcionarios/editar/<?php echo $Cedula->ID;?>/" class="btn btn-primary"><spam class="glyphicon glyphicon-edit"></spam></a>
     <a href="#myModal" class="btn btn-success"><spam class="glyphicon glyphicon-upload" data-toggle="modal" data-target="#myModal"></spam></a>
     <!-- Modal -->
+
+
         <div id="myModal" class="modal fade" role="dialog">
           <div class="modal-dialog">
 
             <!-- Modal content-->
+
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -74,30 +77,39 @@ $contador = 0;
               </div>
               <div class="modal-body">
                  <!-- form start -->
-                    <form role="form">
+                    <form enctype="multipart/form-data" method="post" action="cargar_archivo"><!--Este atributo especifica que la data del formulario va ha ser codificada cuando sea enviada al servidor; la presencia de este atributo es necesaria cuando se desea cargar (upload) archivos al servidor.-->
                       <div class="box-body">
-                        <div class="form-group">
+                        <!--<div class="form-group">
                           <label>Nombre</label>
                           <input type="text" class="form-control" id="txtNombreA" placeholder="Ingrese nombre archivo">
                         </div>
                         
-                       <!-- textarea -->
+                       <!-- textarea --
                         <div class="form-group">
                           <label>Descripción</label>
                           <textarea class="form-control" rows="3" placeholder="Escribe aqui ..."></textarea>
-                        </div>
+                        </div>-->
                       </div>
-                      <div class="form-group">
-                          <label for="exampleInputFile">Elegir archivo</label>
-                          <input type="file" id="exampleInputFile">
 
-                          <p class="help-block">Tipo de archivos jpg.</p>
-                        </div>
-                        <div class="box-footer">
-                        <button type="submit" class="btn btn-success">Subir</button>
+                      <div class="form-group">
+                        <label for="">Archivo a subir:</label>
+                        <input name="mi_archivo" required type="file" multiple>
+                      </div> 
+
+                      <div class="progress progress-striped active">
+                      <div class="progress-bar" role="progressbar" id="barra_estado" 
+                           aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"
+                           style="width: 5%">
+                        <span class="sr-only">5% completado</span>
                       </div>
+                    </div>
                       <!-- /.box-body -->
                 <p>El sistema permitira subir archivos en jpg solamente.</p>
+              </div>
+
+              <div class="acciones">
+                <input class="btn btn-success" type="submit" value="Submit">
+                <input type="button" class="cancel" id="cancelar" value="Cancelar">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -106,8 +118,13 @@ $contador = 0;
 
           </div>
         </div>
-    <a href="<?php echo base_url();?>index.php/funcionarios/ver/<?php echo $Cedula->CEDULA;?>" class="btn btn-info"><spam class="glyphicon glyphicon-eye-open"></spam></a>
+    <a href="<?php echo base_url();?>index.php/upload/<?php echo $Cedula->CEDULA;?>" class="btn btn-info"><spam class="glyphicon glyphicon-eye-open"></spam></a>
     <a href="<?php echo base_url();?>index.php/funcionarios/eliminar/<?php echo $Cedula->ID ?>" class="btn btn-danger"><spam class="glyphicon glyphicon-trash"></spam></a>
+
+    <script src="js/main.js"></script>
+    <script type="text/javascript" language="javascript" src="<?php echo base_url();?>assets/js/main.js"></script>
+
+   
 
 <?php   
     echo '</td>';
